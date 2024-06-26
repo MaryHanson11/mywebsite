@@ -1,0 +1,37 @@
+#colors() {
+  primary: #FFFFFF;
+  secondary: #FCE5FD;
+  tertiary: #6483BF;
+  quaternary: #B6FFF6;
+  text-primary: #414141;
+  text-secondary: #FFFFFF;
+}
+
+#text-box{
+  background-color: #colors[secondary];
+  box-shadow: 0.40rem 0.40rem #colors[tertiary];
+  border: 0.10rem solid #colors[tertiary];
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 18px;
+  font-family: Helvetica;
+}
+
+p{
+  font-family: Helvetica;
+  font-size: 18px;
+}
+
+.page{
+  overflow: auto;
+  scroll-behavior: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw; 
+  height: 100vh;
+}
+
+@color1: #colors[quaternary];
+@color2: #colors[secondary];
+@color3: #colors[tertiary];
+@background-grad: linear-gradient(@color1, @color2);

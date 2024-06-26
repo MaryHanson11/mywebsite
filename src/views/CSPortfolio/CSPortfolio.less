@@ -1,0 +1,45 @@
+@import '../../style.less';
+
+
+.projects-wrapper{
+  display: flex;
+  position: relative;
+  min-height: 80vh;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-image: linear-gradient(white 20%, @color2 );
+  justify-content: center;
+  align-items: center;
+}
+
+.project{
+  background-color: #colors[primary];
+  border: 0.2rem solid #colors[tertiary];
+  box-shadow: 0.40rem 0.40rem #colors[tertiary];
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: Helvetica;
+  display: flex;
+  flex-direction: row;
+  margin: 2rem;
+  height:fit-content;
+  width:fit-content;
+}
+
+.title{
+  background-color: @color1 !important; 
+  border-color: @color3 !important;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.desc{
+  font-weight: 500;
+
+}
+
+.text{
+  margin: 0rem 1rem 0rem 0rem;
+}

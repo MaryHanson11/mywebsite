@@ -1,0 +1,145 @@
+@import "../../style.less";
+
+
+#nav-container{
+  display: flex;
+  height: 12vh;
+  background-image: @background-grad;
+  border: solid #colors[tertiary];
+  border-width: 0px 0px 0.15rem 0px;
+}
+
+.resume-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width:fit-content;
+}
+
+.resume-icon{
+  z-index: 1;
+  position: absolute;
+  font-size: 44px;
+  right: 1rem;
+  color: #colors[tertiary];
+  &:hover{
+    font-size: 40px;
+    color: #colors[quaternary];
+    border: 3px solid #colors[tertiary];
+    border-radius: 8px;
+    background-color: #colors[tertiary];
+    cursor: pointer;
+  }
+}
+
+.menu{
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  flex-direction: row;
+}
+
+.menu-icon{
+  z-index: 1;
+  position:absolute;
+  left: 1rem;
+  color: #colors[tertiary];
+  font-size: 36px;
+  align-self: center;
+  &:hover{
+    color: #colors[quaternary];
+    background-color: #colors[tertiary];
+    border-radius: 8px;
+    border: 3px solid #colors[tertiary];
+    cursor: pointer;
+  }
+}
+
+#res-label{
+  z-index: 1;
+  color: transparent;
+  position: absolute;
+  right: 0.5rem;
+  align-self: end;
+  margin-bottom: 1px;
+}
+
+.res-label-gray{
+  color: gray !important;
+  
+}
+
+nav a {
+  background-color: #colors[secondary];
+  box-shadow: 0.40rem 0.40rem #colors[tertiary];
+  border: 0.10rem solid #colors[tertiary];
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 18px;
+  font-family: Helvetica;
+  margin: 1rem;
+  height: 1.5rem !important;
+  white-space: nowrap; 
+}
+
+nav a:hover {
+  background-color: #colors[quaternary];
+}
+
+.active{
+  background-color: #colors[primary];
+}
+
+#x{
+  margin-top: 1rem;
+  font-size: 34px;
+}
+
+@media only screen and (max-width: 780px){
+  .menu{
+    z-index: 1;
+    position:absolute;
+    left: 1rem;
+    top: 3.2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 10rem;
+    background-color: #colors[tertiary];
+    border-radius: 10px;
+    padding: 0px;
+    border-radius: 10px;
+    border: 2px solid #colors[tertiary];
+    box-shadow: 0.5rem 0.5rem #colors[tertiary];
+    overflow: hidden;
+    margin: 0.5rem 0rem 0rem 0.5rem;
+  }
+  .menu-item{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #colors[secondary];
+    margin: 0rem;
+    border: 1px solid #colors[tertiary];
+    overflow: hidden;
+  }
+  .menu-item:hover{
+    background-color: #colors[quaternary];
+  }
+
+  nav a{
+    position: relative;
+    width:100%;
+    background-color: transparent;
+    background-color: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+  }
+  
+}
+
+
