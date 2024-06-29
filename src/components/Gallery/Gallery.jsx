@@ -2,12 +2,17 @@ import React from "react"
 import { useEffect, useState} from "react";
 import './Gallery.less'
 import { useNavigate } from "react-router-dom";
+import { AsyncImage } from 'loadable-image'
+import portrait1 from '../../assets/portrait-seattle1 (1).jpeg';
 
+// image transitions from https://www.npmjs.com/package/loadable-image
 /*sources: 
   https://medium.com/@josh.j.pearson/tracking-window-size-in-react-redux-9559a597fc04
   https://medium.com/@danrschlosser/building-the-image-grid-from-google-photos-6a09e193c74a 
 */
 
+//<img key={index}   onClick={(e)=>{handleFocus(image.id)}} style={{height: `${newHeight}px`, width: `${width}px`, cursor:'pointer'}}  src={image.url} alt='image' />
+              
 export default function Gallery({kind, data}) {
   //displays images depending on route mixed media or photography
   //row images have the same height and fit the window width
@@ -29,12 +34,7 @@ export default function Gallery({kind, data}) {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
-  
-  const onLoad = () =>{
-    setTimeout(()=>{
-      setRenderImages(true);
-    }, 500) 
-  }
+ 
  
   function handleFocus(id) {
     //load data for navigating to focus route
@@ -73,11 +73,16 @@ export default function Gallery({kind, data}) {
 
             return(
               <div className={ "animation"}>
-                <img key={index}  className={renderImgs ? "showImgs" : "hideImgs"} onClick={(e)=>{handleFocus(image.id)}} onLoad={onLoad} style={{height: `${newHeight}px`, width: `${width}px`, cursor:'pointer'}}  src={image.url} alt='image' />
+                <AsyncImage
+                    key={index}
+                    src={image.url}
+                    style={{ width: width, height: newHeight, cursor: 'pointer'}}
+                    loader={<div className={ "animation"} />}
+                    onClick={()=> {handleFocus(image.id)}}
+                    id='border-img'
+                />
               </div>
             )
-            
-            
           })}
         </div>
       );

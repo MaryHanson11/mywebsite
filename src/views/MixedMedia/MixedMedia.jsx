@@ -7,7 +7,7 @@ import { db } from "../../config/firebase-config";
 import {collection, getDocs, orderBy, query} from "firebase/firestore";
 
 
-export default function MixedMedia({data, setId, setData}) {
+export default function MixedMedia() {
   //mixed media function get json image data and sends it gallery component
   const [fireData, setFireData] = useState(null);
     

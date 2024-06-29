@@ -7,7 +7,7 @@ import { db } from "../../config/firebase-config";
 import {collection, getDocs, orderBy, query} from "firebase/firestore";
 
 
-export default function Photography({data, setId}) {
+export default function Photography() {
   //photography view gets json image data and sends it to gallery component
   const [fireData, setFireData] = useState(null);
 
