@@ -4,18 +4,30 @@
   background-image: linear-gradient(#FFFF , @color2 90%);
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   min-height:80vh;
+  width: 100vw;
 }
 
+#left-col-1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw !important;
+  height: 100% !important;
+  
+}
+#right-col-1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw !important;
+  height: 100% !important;
+}
 
 #pic-wrapper{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  height: 400px;
   border-radius: 50%;
   border: 3px solid #colors[tertiary];
   box-shadow: 50px 50px 100px #colors[quaternary];
@@ -37,8 +49,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 50%;
-  height:100%;
 }
 
 .about-text{
@@ -73,7 +83,7 @@
 }
 
 
-@media only screen and (max-width: 780px){
+@media only screen and (max-width: 700px){
   #about-wrapper{
     display: flex;
     flex-direction: column;
@@ -81,9 +91,18 @@
     align-items: center;
   }
   #text-wrapper{
-    width: 90%;
-    height: 50%;
+    width: 90vw;
+
     margin-bottom: 3rem;
+  }
+
+  #left-col{
+    width: 100vw;
+    height: fit-content !important;
+  }
+  #right-col{
+    width: 100vw;
+    height: fit-content !important;
   }
   
 }

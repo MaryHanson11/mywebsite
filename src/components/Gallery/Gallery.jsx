@@ -3,7 +3,6 @@ import { useEffect, useState} from "react";
 import './Gallery.less'
 import { useNavigate } from "react-router-dom";
 import { AsyncImage } from 'loadable-image'
-import portrait1 from '../../assets/portrait-seattle1 (1).jpeg';
 
 // image transitions from https://www.npmjs.com/package/loadable-image
 /*sources: 
