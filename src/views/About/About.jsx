@@ -60,7 +60,7 @@ export default function About() {
     <div className='page'>
       <NavBar/>
       <div id='about-wrapper'>
-        <div id='left-col-1'>
+        <div id='left-colA'>
           <div id="pic-wrapper" style={{width:`${w}px`, height:`${h}px`, margin:'2rem'}} >
               <AsyncImage     
                 src={'https://firebasestorage.googleapis.com/v0/b/mywebsite-9635a.appspot.com/o/portrait-seattle1%20(1).jpeg?alt=media&token=61b87e65-fc44-4235-b7fe-efac59c481e5'}
@@ -69,7 +69,7 @@ export default function About() {
               />
           </div>
         </div>
-       <div id='right-col-1'>
+       <div id='right-colA'>
           <div id='text-wrapper'>
             <p  className='about' id="text-box">Hello, my name is Mary Hanson. As a fourth year Computer Science student at the 
             University of Florida, I am an avid learner. Through various personal projects and my position 
