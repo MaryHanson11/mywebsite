@@ -18,20 +18,38 @@ export default function About() {
   const [shake2, setShake2] = useState(false);
   const [shake3, setShake3] = useState(false);
   //handle portrait sizing on load
-  var width = window.innerWidth
-  var w1, h1;
-  if (400 >= width){
-    var res = (width / 3) * 2
-    w1 = res;
-    h1 = res;
+  function getWidth(){
+    var width = window.innerWidth
+    var w1, h1;
+    if (400 >= width){
+      var res = (width / 3) * 2
+      w1 = res;
+      h1 = res;
+    }
+    else{
+      w1 = 400;
+      h1 = 400;
+    }
+    return w1
   }
-  else{
-    w1 = 400;
-    h1 = 400;
+  function getHeight(){
+    var width = window.innerWidth
+    var w1, h1;
+    if (400 >= width){
+      var res = (width / 3) * 2
+      w1 = res;
+      h1 = res;
+    }
+    else{
+      w1 = 400;
+      h1 = 400;
+    }
+    return h1
   }
   
-  const [w, setW] = useState(w1)
-  const [h, setH] = useState(h1)
+  
+  const [w, setW] = useState(getWidth())
+  const [h, setH] = useState(getHeight())
 
   useEffect(()=>{
     const handlePortraitResize = () => {
@@ -60,7 +78,8 @@ export default function About() {
     show(id)
   }
   const enlargePopUp = (id) => {
-    if (window.innerWidth <= 780){
+    //MUST BE FIXED
+    /*if (window.innerWidth <= 780){
       if (enlarge.current) {
         document.getElementById(id).style.width = '80vw';
         enlarge.current = false;
@@ -81,7 +100,7 @@ export default function About() {
         enlarge.current = true;
       }
       
-    }
+    }*/
   }
 
   function show(id){
@@ -161,7 +180,7 @@ export default function About() {
   }
 
   function bringToFront(id){
-    res = [0,0,0]
+    var res = [0,0,0]
     if (id == 1){
       res[0] = 3
       if(z[0] < z[1] && z[0] < z[2]){
