@@ -1,12 +1,11 @@
-import {React, useEffect, useState, useRef} from "react";
+import {React, useEffect, useState} from "react";
 import { useNavigate,useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { storage,db } from "../../config/firebase-config";
+import { db } from "../../config/firebase-config";
 import { AsyncImage } from "loadable-image";
-import { Blur, Grow, Slide } from 'transitions-kit'
 import {collection, count, getDocs, orderBy, query, where} from "firebase/firestore";
 import "./Focus.less";
 
@@ -21,14 +20,11 @@ export default function Focus({path,kind}) {
   const navigate = useNavigate();
   const [image, setImage] = useState(null);
   const [show, setShow] = useState(false);
-  //const [processing, setProcessing] = useState(true)
   const [width, setWidth] = useState('auto')
   const [height, setHeight] = useState('auto')
-  const _w = useRef(0)
-  const _h = useRef(0)
 
   const [ID, setID] = useState(id);
-  
+
   console.log(ID)
 
   // get doc image from firebase
@@ -50,7 +46,7 @@ export default function Focus({path,kind}) {
         var data = res.docs.map((doc) => ({...doc.data(), docId: doc.id}))
         var img = data[0];
 
-        var topH = window.innerHeight * 0.95;
+        var topH = window.innerHeight * 0.94;
         var topW = window.innerWidth * 1;
         console.log(topH)
 
@@ -62,23 +58,6 @@ export default function Focus({path,kind}) {
         }
         setWidth(newW);
         setHeight(newH);
-        
-
-        /*if (img && _w.current >= window.innerWidth) {
-          var w = '100vw'
-          _w.current = 100
-          _h.current =  100 / img.ratio
-          setWidth(w)
-          setHeight(`${_h.current}vw`)
-        }
-        else{
-          var h = '95vh'
-          _h.current = 95
-          var w = img.ratio * 95
-          _w = img.ratio * 95
-          setWidth(`${w}vh`)
-          setHeight(h)
-        }*/
 
         setImage(data[0])
         
@@ -87,6 +66,31 @@ export default function Focus({path,kind}) {
       console.log(err)
     })
   }
+
+  useEffect(() => { 
+    //code for tracking window size from medium article cited above
+    const handleWindowResize = () => {
+      var topH = window.innerHeight * 0.95;
+      var topW = window.innerWidth * 1;
+
+      if(image){
+        var newW = topH * image.ratio;
+        var newH = topH;
+        if (newW >= topW){
+          newW = topW;
+          newH = topW / image.ratio;
+        }
+        setWidth(newW);
+        setHeight(newH);
+     } 
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, [image]);
 
   function getSize(){
     if (kind == 0){
@@ -125,55 +129,6 @@ export default function Focus({path,kind}) {
     setID(next)
     navigate(`/${path}/focus/${next}`)
   }
-
-  /*useEffect(()=>{
-    const showIcons = () => {
-      document.getElementById('exit').style.color = ''
-
-    }
-    window.addEventListener('mousemove',showIcons)
-    return () =>{
-      window.removeEventListener('mousemove',showIcons)
-      
-    }
-  })*/
-    useEffect(() => { 
-      //code for tracking window size from medium article cited above
-      const handleWindowResize = () => {
-        var topH = window.innerHeight * 0.95;
-        var topW = window.innerWidth * 1;
-        console.log(topH)
-
-        if(image){
-          var newW = topH * image.ratio;
-          var newH = topH;
-          if (newW >= topW){
-            newW = topW;
-            newH = topW / image.ratio;
-          }
-          setWidth(newW);
-          setHeight(newH);
-       }
-        
-        
-        /*if (image && width >= window.innerWidth) {
-          var w = '100vw'
-          var h =  100 / image.ratio
-          setWidth(w)
-          setHeight(`${h}vw`)
-        }
-        else{
-          var h = '95vh'
-          var w = image.ratio * 95
-          setWidth(`${w}vh`)
-          setHeight(h)
-        }*/
-      };
-      window.addEventListener('resize', handleWindowResize);
-      return () => {
-        window.removeEventListener('resize', handleWindowResize);
-      };
-    }, [image]);
 
   function Image(){
     if(image && image.id == id){
@@ -223,3 +178,15 @@ export default function Focus({path,kind}) {
      <Image/>
    )
  }
+
+   /*useEffect(()=>{
+    const showIcons = () => {
+      document.getElementById('exit').style.color = ''
+
+    }
+    window.addEventListener('mousemove',showIcons)
+    return () =>{
+      window.removeEventListener('mousemove',showIcons)
+      
+    }
+  })*/

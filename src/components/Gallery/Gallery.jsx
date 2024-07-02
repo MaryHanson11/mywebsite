@@ -9,9 +9,7 @@ import { AsyncImage } from 'loadable-image'
   https://medium.com/@josh.j.pearson/tracking-window-size-in-react-redux-9559a597fc04
   https://medium.com/@danrschlosser/building-the-image-grid-from-google-photos-6a09e193c74a 
 */
-
-//<img key={index}   onClick={(e)=>{handleFocus(image.id)}} style={{height: `${newHeight}px`, width: `${width}px`, cursor:'pointer'}}  src={image.url} alt='image' />
-              
+             
 export default function Gallery({kind, data}) {
   //displays images depending on route mixed media or photography
   //row images have the same height and fit the window width
@@ -19,8 +17,6 @@ export default function Gallery({kind, data}) {
   const [windowSize, setWindowSize] = useState([window.innerWidth, window.innerHeight]); 
   const [images, setImages] = useState(null);
   const [path, setPath] = useState("");
-  const [renderImgs, setRenderImages] = useState(false);
-  const [focus, setFocus] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => { 

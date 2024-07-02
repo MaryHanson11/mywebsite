@@ -8,7 +8,7 @@ export default function CSPortfolio() {
   //displays project details for personal CS projects
 
   return (
-    <div id="cs-wrapper" >
+    <div className="page">
       <NavBar/>
       <div className="projects-wrapper">
         <div className="project" style={{flexDirection:"column", width:'fit-content'}}>
